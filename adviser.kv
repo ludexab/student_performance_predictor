@@ -1,0 +1,142 @@
+<HomePage>:
+    cols: 1
+    MDToolbar:
+        id: toolbar
+        title: 'ADVISER'
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        padding: 15
+        spacing: 15
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: .8,.8,.8,.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            padding: 10
+            orientation: 'vertical'
+            size_hint_x: .6
+            GridLayout:
+                cols: 1
+                size_hint_y: self.minimum_height
+                spacing: 5
+                padding: 10
+                MDLabel:
+                    font_style: 'H6'
+                    color: 0,0,0,1
+                    text: 'Matric Number:'
+                MDTextFieldRect:
+                    id: matric
+                    write_tab: False
+                    multiline: False
+                    size_hint_y: None
+                    height: 50
+                    size_hint_x: None
+                    width: 200
+                    text: 'Enter Matric No.'
+                MDRaisedButton:
+                    text: 'LOAD'
+                    on_release: root.load_details(matric.text)
+                    pos_hint: {'center_x': .5}
+                MDLabel:
+                    font_style: 'H6'
+                    color: 0,0,0,1
+                    text: 'Details'
+                MDCard:
+                    id: student_details
+                    orientation: 'vertical'
+                    padding: 10
+                    size_hint_y: None
+                    height: 250
+                MDRaisedButton:
+                    id: predict_button
+                    text: 'PREDICT'
+                    disabled: True
+                    on_release: root.predict(matric.text)
+                    pos_hint: {'center_x': .5}
+
+        BoxLayout:
+            spacing: 15
+            orientation: 'vertical'
+            size_hint_x: .4
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: .8,.8,.8,.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                padding: 10
+                orientation: 'vertical'
+                size_hint_y: .45
+                GridLayout:
+                    cols: 1
+                    spacing: 20
+                    padding: 10
+                    MDLabel:
+                        padding_x: 10
+                        font_style: 'H6'
+                        color: 0,0,0,1
+                        text: 'Predicted GPA:'
+
+                    MDLabel:
+                        id: next_cgpa
+                        padding_x: 10
+                        font_style: 'H3'
+                        color: 1,0,1,1
+                    MDLabel:
+                        padding_x: 10
+                        font_style: 'H6'
+                        color: 0,0,0,1
+                        text: 'Predict manually:'
+                    MDTextFieldRect:
+                        id: manual_student_details
+                        write_tab: False
+                        multiline: True
+                        size_hint_y: None
+                        height: 50
+                        text: 'Enter comma separated gpa beginning with EntryPoint'
+                    MDRaisedButton:
+                        text: 'PREDICT'
+                        on_release: root.predict(manual_student_details.text)
+                        pos_hint: {'center_x': .5}
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: .8,.8,.8,.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                padding: 10
+                orientation: 'vertical'
+                size_hint_y: .55
+                GridLayout:
+                    cols: 1
+                    rows: 3
+                    halign: 'center'
+                    spacing: 20
+                    padding: 10
+                    MDLabel:
+                        padding_x: 10
+                        font_style: 'H6'
+                        color: 0,0,0,1
+                        text: 'ADVISER COMMENT'
+                        pos_hint: {'center_x': .5}
+                    MDTextFieldRect:
+                        id: adviser_comment
+                        write_tab: False
+                        multiline: True
+                        size_hint_y: None
+                        height: 200
+                        size_hint_x: 250
+                        pos_hint: {'center_x': .5}
+                    MDRaisedButton:
+                        text: 'COMMENT'
+                        on_release: root.comment(adviser_comment.text)
+                        pos_hint: {'center_x': .5}
